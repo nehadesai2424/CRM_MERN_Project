@@ -1,0 +1,123 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2';
+
+function Issues() {
+  // to get data   
+  const [issueData, setIssueData] = useState([]);
+
+  function loadData() {
+    console.log(process.env.REACT_APP_BASEURL + "/customers-issue");
+    axios.get(process.env.REACT_APP_BASEURL + "/customers-issue")
+      .then((res) => {
+        console.log(res.data.data);
+        setIssueData(res.data.data);
+      })
+  };
+
+  useEffect(() => {
+    loadData()
+  }, [])
+
+  //To delete data
+  function handleDelete(id) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(process.env.REACT_APP_BASEURL + "/customers-issue/" + id)
+          .then((res) => {
+            console.log(res.data);
+            loadData(); // Refresh the data after deletion
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your item has been deleted.",
+              icon: "success"
+            });
+          })
+          .catch((error) => {
+            console.error("Error deleting item:", error);
+            Swal.fire({
+              title: "Error!",
+              text: "Something went wrong. Please try again later.",
+              icon: "error"
+            });
+          });
+      }
+    });
+  }
+  return (
+    <>
+      <main id="main" class="main">
+        <div class="pagetitle">
+          <h1>Customer Issues</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a>Home</a></li>
+              <li class="breadcrumb-item active">Customer Issues</li>
+            </ol>
+
+            <div className='d-flex justify-content-start'>
+              <Link to='/addissues'>
+                <button className='btn btn-primary px-5 ms-3 mt-2'><i class="fa-solid fa-plus me-2"></i>Add Issue</button>
+              </Link>
+            </div>
+          </nav>
+        </div>
+        {/* <hr /> */}
+
+
+        <div class="container mt-4" style={{ height: '70vh', overflowY: 'scroll' }}>
+          {/* <h4 class="mb-3">Employee Details</h4> */}
+          <div class="table-responsive">
+            <table class="table table-bordered shadow text-center">
+              <thead class="table-secondary">
+                <tr>
+                  <th className='py-3'>No</th>
+                  <th className='py-3'>Customer Name</th>
+                  <th className='py-3'>Issues</th>
+                  <th className='py-3'>Employee Name</th>
+                  <th className='py-3'>Issues Date</th>
+                  <th className='py-3'>Close Date</th>
+                  {/* <th className='py-3'>Reviews Count</th> */}
+                  {/* <th className='py-3'>Status</th> */}
+                  <th className='py-3'>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  issueData.map((eachData, index) => {
+                    return (
+                      <tr>
+                        <td>{index + 1}</td>
+                        <td>{eachData.customerId.name}</td>
+                        <td>{eachData.issue}</td>
+                        <td>{eachData.employeeId.name}</td>
+                        <td>{eachData.issueDate}</td>
+                        <td>{eachData.closeDate}</td>
+                        <td>
+                          <button class="btn btn-danger btn-sm" onClick={() => handleDelete(eachData._id)}><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                      </tr>
+                    )
+                  })
+                }
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+    </>
+  )
+}
+
+export default Issues
