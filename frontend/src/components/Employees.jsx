@@ -217,7 +217,7 @@ function Employees() {
                         <td>{eachData.mobile}</td>
                         <td>{eachData.password}</td>
                         <td>
-                          <button class="btn btn-primary btn-sm mx-2" onClick={() => handleUpdate(eachData._id)}><i class="fa-solid fa-pencil"></i></button>
+                          <button class="btn btn-primary btn-sm me-2" onClick={() => handleUpdate(eachData._id)}><i class="fa-solid fa-pencil"></i></button>
                           <button class="btn btn-danger btn-sm" onClick={() => handleDelete(eachData._id)}><i class="fa-solid fa-trash"></i></button>
                         </td>
                       </tr>

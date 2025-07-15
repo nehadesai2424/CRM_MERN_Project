@@ -125,7 +125,7 @@ function Sidebar() {
                         {/* Issues */}
                         <li class="nav-item">
                             <Link to="/issues" class="nav-link collapsed" href="">
-                                <i class="bi bi-grid"></i>
+                                <i class="bi bi-exclamation-circle"></i>
                                 <span> Customer Issues</span>
                             </Link>
                         </li>
@@ -148,17 +148,45 @@ function Sidebar() {
                         </li>
                         {/* <!-- End Tables Nav --> */}
 
-                        {/* <li class="nav-heading">Pages</li>
+                        {/* <li class="nav-heading">Pages</li> */}
 
                         <li class="nav-item">
-                            <a class="nav-link collapsed" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>Profile</span>
-                            </a>
-                        </li> */}
+                            <Link to="/quotations" class="nav-link collapsed" href="">
+                                {/* <i class="bi bi-person"></i> */}
+                                <i class="bi bi-file-earmark"></i>
+                                <span>Quotations</span>
+                            </Link>
+                        </li>
                         {/* <!-- End Profile Page Nav --> */}
 
-                        {/* <li class="nav-item">
+                        <li class="nav-item">
+                            <Link to="/quotation-details" class="nav-link collapsed" href="">
+                                {/* <i class="bi bi-person"></i> */}
+                                <i class="bi bi-file-earmark-text"></i>
+                                <span>Quotation Details</span>
+                            </Link>
+                        </li>
+                        {/* <!-- End Profile Page Nav --> */}
+
+                        <li class="nav-item">
+                            <Link to="/amc-contracts" class="nav-link collapsed" href="">
+                                {/* <i class="bi bi-person"></i> */}
+                                <i class="bi bi-file-check"></i>
+                                <span>AMC Contracts</span>
+                            </Link>
+                        </li>
+                        {/* <!-- End Profile Page Nav --> */}
+
+                        <li class="nav-item">
+                            <Link to="/amc-contract-details" class="nav-link collapsed" href="">
+                                {/* <i class="bi bi-person"></i> */}
+                                <i class="bi bi-file-text"></i>
+                                <span>AMC Contract Details</span>
+                            </Link>
+                        </li>
+                        {/* <!-- End Profile Page Nav --> */}
+                        {/* 
+                        <li class="nav-item">
                             <a class="nav-link collapsed" href="pages-faq.html">
                                 <i class="bi bi-question-circle"></i>
                                 <span>F.A.Q</span>

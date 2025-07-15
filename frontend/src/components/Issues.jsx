@@ -64,10 +64,29 @@ function Issues() {
               <li class="breadcrumb-item active">Customer Issues</li>
             </ol>
 
-            <div className='d-flex justify-content-start'>
-              <Link to='/addissues'>
+            <div className='d-flex justify-content-end me-4'>
+              {/* <Link to='/addissues'>
                 <button className='btn btn-primary px-5 ms-3 mt-2'><i class="fa-solid fa-plus me-2"></i>Add Issue</button>
+              </Link> */}
+
+              <Link to="/addissues" className="text-decoration-none">
+                <div
+                  className="d-inline-flex align-items-center border rounded shadow-sm px-4 py-2 bg-light hover-effect"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="right"
+                  title="Add a new customer issue"
+                  style={{ transition: 'all 0.2s ease-in-out' }}
+                >
+                  <i className="bi bi-plus-circle-fill text-primary me-2 fs-5"></i>
+                  <div>
+                    <div className="fw-semibold text-dark small">Add Issue</div>
+                    <small className="text-muted">Log a complaint or query</small>
+                  </div>
+                </div>
               </Link>
+
+
+
             </div>
           </nav>
         </div>
@@ -103,6 +122,7 @@ function Issues() {
                         <td>{eachData.issueDate}</td>
                         <td>{eachData.closeDate}</td>
                         <td>
+                          <button class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-pencil"></i></button>
                           <button class="btn btn-danger btn-sm" onClick={() => handleDelete(eachData._id)}><i class="fa-solid fa-trash"></i></button>
                         </td>
                       </tr>

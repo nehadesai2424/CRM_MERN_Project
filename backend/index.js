@@ -25,6 +25,8 @@ app.use("/employees", require("./routes/employeeRoutes"));
 app.use("/customers", require("./routes/customerRoutes"));
 app.use("/customers-issue", require("./routes/customerIssueRoutes"));
 app.use("/issue-review", require("./routes/issueReviewRoutes"));
+app.use("/quotations", require("./routes/quotationRoutes"));
+//app.use("/quotation-details", require("./routes/quotationDetailRoutes"));
 
 
 //----------------------------------------------------------------------------------------
