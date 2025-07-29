@@ -146,7 +146,7 @@ function Customers() {
           <h1>Customers</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a>Home</a></li>
+              <li class="breadcrumb-item"><a href='/'>Home</a></li>
               <li class="breadcrumb-item"><a>Forms</a></li>
               <li class="breadcrumb-item active">Customers</li>
             </ol>
@@ -190,7 +190,7 @@ function Customers() {
         </div>
 
         {/* Customer Table */}
-        <div class="container mt-5">
+        {/* <div class="container mt-5">
           <h4 class="mb-3">Customer Details</h4>
           <div class="table-responsive">
             <table class="table table-bordered text-center shadow">
@@ -227,7 +227,58 @@ function Customers() {
               </tbody>
             </table>
           </div>
+        </div> */}
+
+        <div className="container mt-5">
+          <h4 className="mb-3">Customer Details</h4>
+          <div className="table-responsive">
+            <table className="table table-bordered text-center shadow">
+              <thead className="table-secondary">
+                <tr>
+                  <th className="py-3">No</th>
+                  <th className="py-3">Name</th>
+                  <th className="py-3">Address</th>
+                  <th className="py-3">Email</th>
+                  <th className="py-3">Mobile</th>
+                  <th className="py-3">Alternate Mobile</th>
+                  <th className="py-3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  customerData.map((eachData, index) => (
+                    <tr key={eachData._id}>
+                      <td>{index + 1}</td>
+                      <td>{eachData.name}</td>
+                      <td className="text-break" style={{ maxWidth: '200px' }}>{eachData.address}</td>
+                      <td className="text-break" style={{ maxWidth: '200px' }}>{eachData.email}</td>
+                      <td>{eachData.mobile}</td>
+                      <td>{eachData.altmobile}</td>
+                      <td>
+                        <div className="d-flex flex-sm-row flex-column justify-content-center gap-2">
+                          <button
+                            className="btn btn-primary btn-sm"
+                            onClick={() => handleUpdate(eachData._id)}
+                          >
+                            <i className="fa-solid fa-pencil"></i>
+                          </button>
+                          <button
+                            className="btn btn-danger btn-sm"
+                            onClick={() => handleDelete(eachData._id)}
+                          >
+                            <i className="fa-solid fa-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
+
 
       </main>
     </>

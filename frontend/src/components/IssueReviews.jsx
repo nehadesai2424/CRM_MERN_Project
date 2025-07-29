@@ -8,7 +8,7 @@ function IssueReviews() {
                     <h1>Issue Reviews</h1>
                     <nav>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a>Home</a></li>
+                            <li class="breadcrumb-item"><a href='/'>Home</a></li>
                             <li class="breadcrumb-item"><a>General Reports</a></li>
                             <li class="breadcrumb-item active">Issue Reviews</li>
                         </ol>

@@ -7,8 +7,10 @@ function Issues() {
   // to get data   
   const [issueData, setIssueData] = useState([]);
 
+
+  // Function to load data from the backend
   function loadData() {
-    console.log(process.env.REACT_APP_BASEURL + "/customers-issue");
+    //console.log(process.env.REACT_APP_BASEURL + "/customers-issue");
     axios.get(process.env.REACT_APP_BASEURL + "/customers-issue")
       .then((res) => {
         console.log(res.data.data);
@@ -60,7 +62,7 @@ function Issues() {
           <h1>Customer Issues</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a>Home</a></li>
+              <li class="breadcrumb-item"><a href='/'>Home</a></li>
               <li class="breadcrumb-item active">Customer Issues</li>
             </ol>
 
@@ -91,49 +93,49 @@ function Issues() {
           </nav>
         </div>
         {/* <hr /> */}
-
-
-        <div class="container mt-4" style={{ height: '70vh', overflowY: 'scroll' }}>
-          {/* <h4 class="mb-3">Employee Details</h4> */}
-          <div class="table-responsive">
-            <table class="table table-bordered shadow text-center">
-              <thead class="table-secondary">
+        <div className="container mt-4" style={{ height: '70vh', overflowY: 'scroll' }}>
+          <div className="table-responsive">
+            <table className="table table-bordered shadow text-center">
+              <thead className="table-secondary">
                 <tr>
-                  <th className='py-3'>No</th>
-                  <th className='py-3'>Customer Name</th>
-                  <th className='py-3'>Issues</th>
-                  <th className='py-3'>Employee Name</th>
-                  <th className='py-3'>Issues Date</th>
-                  <th className='py-3'>Close Date</th>
-                  {/* <th className='py-3'>Reviews Count</th> */}
-                  {/* <th className='py-3'>Status</th> */}
-                  <th className='py-3'>Action</th>
+                  <th className="py-3">No</th>
+                  <th className="py-3">Customer Name</th>
+                  <th className="py-3">Issues</th>
+                  <th className="py-3">Employee Name</th>
+                  <th className="py-3">Issues Date</th>
+                  <th className="py-3">Close Date</th>
+                  <th className="py-3">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  issueData.map((eachData, index) => {
-                    return (
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{eachData.customerId.name}</td>
-                        <td>{eachData.issue}</td>
-                        <td>{eachData.employeeId.name}</td>
-                        <td>{eachData.issueDate}</td>
-                        <td>{eachData.closeDate}</td>
-                        <td>
-                          <button class="btn btn-primary btn-sm me-2"><i class="fa-solid fa-pencil"></i></button>
-                          <button class="btn btn-danger btn-sm" onClick={() => handleDelete(eachData._id)}><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                      </tr>
-                    )
-                  })
-                }
+                  issueData.map((eachData, index) => (
+                    <tr key={eachData._id}>
+                      <td>{index + 1}</td>
+                      <td>{eachData.customerId.name}</td>
+                      <td>{eachData.issue}</td>
+                      <td>{eachData.employeeId.name}</td>
+                      <td>{eachData.issueDate}</td>
+                      <td>{eachData.closeDate}</td>
+                      <td>
+                        <div className="d-flex flex-sm-row flex-column justify-content-center gap-2">
 
+                          {/* <button className="btn btn-primary btn-sm">
+                            <i className="fa-solid fa-pencil"></i>
+                          </button> */}
+                          <button className="btn btn-danger btn-sm" onClick={() => handleDelete(eachData._id)}>
+                            <i className="fa-solid fa-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                }
               </tbody>
             </table>
           </div>
         </div>
+
       </main>
 
     </>

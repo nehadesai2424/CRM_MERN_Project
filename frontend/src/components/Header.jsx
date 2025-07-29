@@ -135,7 +135,7 @@ function Header() {
                   <a href="#">
                     <img src={require("../assets/img/messages-1.jpg")} alt="" class="rounded-circle" />
                     <div>
-                      <h4>Maria Hudson</h4>
+                      <h4>Sejal Jain</h4>
                       <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
                       <p>4 hrs. ago</p>
                     </div>
@@ -149,7 +149,7 @@ function Header() {
                   <a href="#">
                     <img src={require("../assets/img/messages-2.jpg")} alt="" class="rounded-circle" />
                     <div>
-                      <h4>Anna Nelson</h4>
+                      <h4>Avira Rane</h4>
                       <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
                       <p>6 hrs. ago</p>
                     </div>
@@ -163,7 +163,7 @@ function Header() {
                   <a href="#">
                     <img src={require("../assets/img/messages-3.jpg")} alt="" class="rounded-circle" />
                     <div>
-                      <h4>David Muldon</h4>
+                      <h4>Ronit Rane</h4>
                       <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
                       <p>8 hrs. ago</p>
                     </div>
@@ -187,13 +187,13 @@ function Header() {
 
               <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                 <img src={require("../assets/img/profile-img.jpg")} alt="Profile" class="rounded-circle" />
-                <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                <span class="d-none d-md-block dropdown-toggle ps-2">Ronit Desai</span>
               </a>
               {/* <!-- End Profile Iamge Icon --> */}
 
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header">
-                  <h6>Kevin Anderson</h6>
+                  <h6>Ronit Desai</h6>
                   <span>CEO</span>
                 </li>
                 <li>

@@ -1,7 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 function AddIssue() {
+
+    // to navigate
+    const navigate = useNavigate();
 
     //to get customerData
     const [customer, setCustomer] = useState([]);
@@ -44,12 +49,14 @@ function AddIssue() {
         try {
             const Issue = await axios.post(process.env.REACT_APP_BASEURL + "/customers-issue", issue);
             alert("Issue added successfully!");
-            console.log(Issue);
-            setIssue({ customerId: "", employeeId: "", issue: "", issueDate: "", closeDate: "", status: "" }); // Clear form
+            setIssue({ customerId: "", employeeId: "", issue: "", issueDate: "", closeDate: "", status: "" });
+
+            navigate("/issues"); // Redirect after alert
         } catch (error) {
             console.error("Error adding Customer:", error);
         }
     }
+
 
     return (
         <>
@@ -58,7 +65,7 @@ function AddIssue() {
                     <h1>Issue Form</h1>
                     <nav>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a>Home</a></li>
+                            <li class="breadcrumb-item"><a href='/'>Home</a></li>
                             <li class="breadcrumb-item"><a>Customer Issues</a></li>
                             <li class="breadcrumb-item active">Issue Form</li>
                         </ol>
@@ -86,7 +93,7 @@ function AddIssue() {
                                         }
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                {/* <div class="col-md-6">
                                     <label class="form-label fw-bold">Employee <span class="text-danger">*</span></label>
                                     <select value={issue.employeeId} onChange={handleChangeIssueData} class="form-select" name="employeeId" required>
                                         <option value="">Select Employee</option>
@@ -100,7 +107,28 @@ function AddIssue() {
                                             })
                                         }
                                     </select>
+                                </div> */}
+
+                                <div className="col-md-6">
+                                    <label className="form-label fw-bold">
+                                        Employee <span className="text-danger">*</span>
+                                    </label>
+                                    <select
+                                        value={issue.employeeId}
+                                        onChange={handleChangeIssueData}
+                                        className="form-select"
+                                        name="employeeId"
+                                        required
+                                    >
+                                        <option value="">Select Employee</option>
+                                        {employee.map((employee) => (
+                                            <option key={employee._id} value={employee._id}>
+                                                {employee.name} &nbsp; ({employee.position})
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
+
                             </div>
 
                             {/* <!-- Second Row: Issue Input (Text Area) --> */}
@@ -137,3 +165,7 @@ function AddIssue() {
 }
 
 export default AddIssue
+
+
+
+
